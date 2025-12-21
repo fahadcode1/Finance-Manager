@@ -1,0 +1,1 @@
+import Storage from"./storage.js";import"./styles.css";import Renderer from"./renderer.js";const storage=new Storage,projectManager=storage.load(),renderer=new Renderer(projectManager,storage);window.renderer=renderer,renderer.render(),console.log("To-Do List App initialized successfully!");

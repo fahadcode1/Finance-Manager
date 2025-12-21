@@ -1,0 +1,636 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --secondary: #8b5cf6;
+  --success: #10b981;
+  --bg: #0f172a;
+  --card: #1e293b;
+  --card-hover: #334155;
+  --text: #f1f5f9;
+  --text-dim: #94a3b8;
+  --border: #334155;
+  --glow: rgba(99, 102, 241, 0.3);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+#main-arena {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+nav {
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+nav button {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+nav button:hover {
+  background: var(--card-hover);
+  color: var(--text);
+  border-color: var(--primary);
+}
+
+nav button.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  box-shadow: 0 0 20px var(--glow);
+}
+
+/* ============================================
+   WRAPPERS
+   ============================================ */
+.home-wrapper,
+.expense-wrapper,
+.wrapper {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+}
+
+/* ============================================
+   HOME
+   ============================================ */
+.chooseMonth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.chooseMonth::before {
+  content: 'Month:';
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+#monthSelect {
+  padding: 0.5rem 1rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  color: var(--text);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+#monthSelect:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--glow);
+}
+
+/* ============================================
+   INCOME - COMPACT
+   ============================================ */
+.amount.wrapper {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  background: var(--card);
+}
+
+.amount.wrapper label {
+  font-size: 1rem;
+  color: var(--text);
+}
+
+#amountInput {
+  padding: 0.75rem 1rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  color: var(--text);
+  text-align: center;
+}
+
+#amountInput:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--glow);
+}
+
+#save-button {
+  padding: 0.75rem;
+  background: var(--success);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#save-button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   EXPENSES - MINIMAL & COMPACT
+   ============================================ */
+.expense-wrapper {
+  padding: 1.5rem;
+}
+
+.expense-wrapper h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 1.5rem 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary);
+  display: inline-block;
+}
+
+.expense-wrapper h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem 0;
+}
+
+#default-expense-container {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.default-expense-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+.default-expense-row:hover {
+  border-color: var(--primary);
+}
+
+.default-expense-row input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--primary);
+}
+
+.default-expense-row label {
+  font-size: 0.9rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.default-expense-row input[type="number"] {
+  width: 100px;
+  padding: 0.4rem 0.6rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  color: var(--text);
+  font-size: 0.85rem;
+}
+
+.default-expense-row select {
+  padding: 0.4rem 0.6rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  color: var(--text);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.default-expense-row input:disabled,
+.default-expense-row select:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.default-expense-row input:focus,
+.default-expense-row select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* Custom Expense Form - Compact */
+.expense-wrapper label:not(.default-expense-row label) {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.expense-wrapper input[type="text"],
+.expense-wrapper input[type="number"]:not(.default-expense-row input),
+.expense-wrapper select:not(.default-expense-row select) {
+  width: 100%;
+  padding: 0.6rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.expense-wrapper input:focus,
+.expense-wrapper select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--glow);
+}
+
+#add-custom-expense {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.2s;
+}
+
+#add-custom-expense:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 0 20px var(--glow);
+}
+
+/* Expense List */
+#expense-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.expense-row {
+  padding: 0.75rem;
+  background: var(--bg);
+  border-left: 3px solid var(--primary);
+  border-radius: 0.25rem;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.expense-row:hover {
+  background: var(--card-hover);
+  transform: translateX(4px);
+}
+
+#expense-list > div:first-child:last-child {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-dim);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   MENU SECTIONS
+   ============================================ */
+#menu-income-section,
+#menu-expenses-section {
+  margin-bottom: 1.5rem;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  #main-arena {
+    padding: 1rem 0.75rem;
+  }
+  
+  nav {
+    padding: 0.75rem 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .default-expense-row {
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem;
+  }
+  
+  .default-expense-row input[type="number"],
+  .default-expense-row select {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+}
+
+/* ============================================
+   AI GLOW EFFECTS
+   ============================================ */
+.home-wrapper,
+.expense-wrapper,
+.wrapper {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+input:focus,
+select:focus,
+button:hover {
+  transition: all 0.2s ease;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* ✅ ADDED: Dashboard Stats */
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.stat-card {
+  background: #1a1f3a;
+  border: 1px solid #2d3548;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.stat-card h3 {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-card .amount {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.income-card {
+  border-left: 4px solid #10b981;
+}
+
+.income-card .amount {
+  color: #10b981;
+}
+
+.expenses-card {
+  border-left: 4px solid #ef4444;
+}
+
+.expenses-card .amount {
+  color: #ef4444;
+}
+
+.remaining-card.positive {
+  border-left: 4px solid #8b5cf6;
+}
+
+.remaining-card.positive .amount {
+  color: #8b5cf6;
+}
+
+.remaining-card.negative {
+  border-left: 4px solid #f59e0b;
+}
+
+.remaining-card.negative .amount {
+  color: #f59e0b;
+}
+
+.month-card {
+  border-left: 4px solid #3b82f6;
+}
+
+.month-card .month-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #3b82f6;
+  margin: 0;
+}
+
+.delete-btn {
+  background: rgba(255, 70, 70, 0.15);   /* transparent red */
+  border: 1px solid rgba(255, 70, 70, 0.4);
+  color: #ff4d4d;
+
+  padding: 6px 10px;
+  border-radius: 8px;
+
+  font-size: 16px;
+  cursor: pointer;
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  transition: all 0.25s ease;
+}
+
+.delete-btn:hover {
+  background: rgba(255, 70, 70, 0.35);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(255, 70, 70, 0.6);
+  transform: scale(1.1);
+}
+
+.delete-btn:active {
+  transform: scale(0.95);
+}
+
+
+/* ===== MONTH CARD ===== */
+.month-card {
+  background: linear-gradient(
+    145deg,
+    var(--card),
+    #0b1224
+  );
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  transition: 
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.month-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.45),
+    0 0 25px var(--glow);
+}
+
+/* ===== MONTH TITLE ===== */
+.month-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  margin-bottom: 1rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.month-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    var(--border),
+    transparent
+  );
+  margin-left: 0.75rem;
+}
+
+/* ===== ROWS ===== */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+}
+
+/* subtle divider between rows */
+.row:not(:last-child) {
+  border-bottom: 1px dashed rgba(148, 163, 184, 0.15);
+}
+
+/* ===== VALUES ===== */
+.row span:last-child {
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ===== INCOME ===== */
+.row.income span:last-child {
+  color: var(--success);
+}
+
+/* ===== EXPENSE ===== */
+.row.expense span:last-child {
+  color: #ef4444;
+}
+
+/* ===== SAVINGS ===== */
+.row.savings {
+  margin-top: 0.4rem;
+  padding-top: 0.8rem;
+  font-size: 1rem;
+}
+
+.row.savings span:first-child {
+  color: var(--text);
+}
+
+.row.savings span:last-child {
+  color: var(--secondary);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .month-card {
+    padding: 1.2rem;
+  }
+
+  .row {
+    font-size: 0.9rem;
+  }
+
+  .row.savings {
+    font-size: 0.95rem;
+  }
+}
