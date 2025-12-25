@@ -75,11 +75,16 @@ export function loadHome() {
       <div class="stat-card expenses-card">
         <h3>Total Expenses</h3>
         <p class="amount">₹${totalExpenses.toLocaleString()}</p>
+          <p>
+          (${income > 0 ? ((totalExpenses / income) * 100).toFixed(1) : 0}%)
+        </p>
       </div>
 
       <div class="stat-card remaining-card ${remaining >= 0 ? 'positive' : 'negative'}">
         <h3>Remaining</h3>
-        <p class="amount">₹${remaining.toLocaleString()}</p>
+        <p class="amount">₹${remaining.toLocaleString()}
+        </p>
+        <p> (${income > 0 ? ((remaining / income) * 100).toFixed(1) : 0}%)</p>
       </div>
 
       <div class="stat-card month-card">
@@ -89,9 +94,9 @@ export function loadHome() {
     `;
   }
 
-  // ✅ UPDATED: Month selector change event
+  
   selectMonth.addEventListener("change", () => {
-    const selectedMonthKey = selectMonth.value; // Already in "YYYY-MM" format
+    const selectedMonthKey = selectMonth.value; 
     setActiveMonth(selectedMonthKey);
     renderDashboard(); // Update dashboard
     console.log("Switched to month:", selectedMonthKey); 

@@ -1,7 +1,9 @@
 import { loadMainui } from './mainui.js';
 import { loadHome } from './home.js';
 import { loadMenu } from './menu.js';
+import { loadInsights } from './insights.js'
 import { loadHistory } from './history.js';
+import { loadSettings} from './settings.js';
 import './styles.css';
 
 
@@ -17,7 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const homeButton = document.getElementById('dashboardBtn');
   const menuButton = document.getElementById('menuBtn');
-  const historyButton = document.getElementById('historyBtn'); // FIXED
+  const historyButton = document.getElementById('historyBtn'); 
+  const insightsButton = document.getElementById('insightsBtn')
+  const settingsButton = document.getElementById('settingsBtn')
 
   // DASHBOARD
   homeButton.addEventListener('click', () => {
@@ -35,6 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
     setActiveButton(menuButton);
   });
 
+  insightsButton.addEventListener('click', () => {
+    const arena = document.getElementById("main-arena");
+    arena.innerHTML = "";
+    loadInsights();
+    setActiveButton(insightsButton);
+  });
+
   // HISTORY
   historyButton.addEventListener('click', () => {
     const arena = document.getElementById("main-arena");
@@ -42,6 +53,15 @@ document.addEventListener("DOMContentLoaded", () => {
     loadHistory();  // FIXED
     setActiveButton(historyButton);
   });
+
+  settingsButton.addEventListener('click', () => {
+    const arena = document.getElementById("main-arena");
+    arena.innerHTML = "";
+    loadSettings();
+    setActiveButton(settingsButton);
+
+  })
+
 
 });
 

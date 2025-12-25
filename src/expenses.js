@@ -210,7 +210,7 @@ export function loadExpenses(container) {
     text.textContent = `${exp.title} — ₹${exp.amount} (${exp.repeat})`;
 
     const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "❌";
+    deleteBtn.textContent = "Delete";
     deleteBtn.style.marginLeft = "10px";
     deleteBtn.classList.add("delete-btn");
 

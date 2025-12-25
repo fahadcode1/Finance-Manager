@@ -6,15 +6,34 @@ import {
   setActiveMonth 
 } from './month.js';
 
+export function calculation(){
+  
+  const allExpenses = getAllExpensesData();
+  const allIncome = getAllExpenses();
 
-const income = getActiveIncome();
-const totalExpenses = getActiveTotalExpenses();
-const remaining = getActiveRemaining();
-
-console.log("Income:", income);
-console.log("Total Expenses:", totalExpenses);
-console.log("Remaining:", remaining);
+  
 
 
-setActiveMonth("2024-11"); 
-const novIncome = getActiveIncome();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+

@@ -1,6 +1,7 @@
 import {
   getAllIncomeData,
-  getAllExpensesData
+  getAllExpensesData,
+  
 } from "./month.js";
 
 export function loadHistory () {
@@ -26,13 +27,15 @@ export function loadHistory () {
   }  
 
   
-const allIncome = getAllIncomeData();
-const allExpenses = getAllExpensesData();
+    const allIncome = getAllIncomeData();
+    const allExpenses = getAllExpensesData();
 
-  const months = new Set([
-    ...Object.keys(allIncome),
-    ...Object.keys(allExpenses)
-  ]);
+    const months = [
+      ...new Set([
+        ...Object.keys(allIncome),
+        ...Object.keys(allExpenses)
+      ])
+    ].sort().reverse();
 
     months.forEach(month =>{
       const income = allIncome[month]?.income || 0;
@@ -40,8 +43,14 @@ const allExpenses = getAllExpensesData();
 
       const expenseTotal = expensesArr.reduce(
         (sum, exp) => sum + exp.amount,
-        0
+        0,
+
+        
+        
       );
+      
+
+
 
       const monthCard = document.createElement("div");
       monthCard.classList.add("month-card");
@@ -56,11 +65,15 @@ const allExpenses = getAllExpensesData();
 
     const expenseEl = document.createElement("div");
     expenseEl.classList.add("row", "expense");
-    expenseEl.innerHTML = `<span>Expenses</span><span>₹${expenseTotal}</span>`;
+    expenseEl.innerHTML = `<span>Expenses</span><span>₹${expenseTotal} 
+    (${income > 0 ?((expenseTotal/income) * 100).toFixed(1) : 0}%)</span>`;
 
     const savingsEl = document.createElement("div");
     savingsEl.classList.add("row", "savings");
-    savingsEl.innerHTML = `<span>Savings</span><span>₹${income - expenseTotal}</span>`;
+    savingsEl.innerHTML = `<span>Savings</span><span>₹${income - expenseTotal} 
+    (${income > 0 ? (((income - expenseTotal) / income) * 100).toFixed(1) : 0}%)</span>`;
+
+
 
     monthCard.appendChild(title);
     monthCard.appendChild(incomeEl);
